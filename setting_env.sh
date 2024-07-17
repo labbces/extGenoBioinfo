@@ -41,7 +41,7 @@ conda create -y -n merqury -c bioconda merqury
 conda create -y -n jupiterplot -c bioconda circos samtools minimap2
 conda create -y -n igv -c bioconda igv
 conda create -y -n eggnogmapper -c bioconda -c conda-forge eggnog-mapper
-conda create -y -n transcriptomics -c conda-forge -c bioconda ffq python r-base r-ggplot2 bioconductor-tximport bioconductor-deseq2 fastqc bbmap multiqc
+conda create -y -n transcriptomics -c conda-forge -c bioconda ffq python fastqc bbmap multiqc
 
 
 #Installing genomescope2 requires a special treatment as we need to install some old R packages
@@ -80,9 +80,21 @@ rm -rf gffread-0.12.7.Linux_x86_64*
 #Installing Rstudio
 cd ~/Downloads; wget https://download1.rstudio.org/electron/jammy/amd64/rstudio-2024.04.2-764-amd64-debian.tar.gz
 tar xvzf rstudio-2024.04.2-764-amd64-debian.tar.gz
-sudo apt remove rstudio
-rm -rf /usr/local/rstudio
 sudo mv rstudio-2024.04.2+764/ /usr/local/rstudio
 echo "PATH=$PATH:/usr/local/rstudio/" >> ~/.bashrc
 . ~/.bashrc
 rm rstudio-2024.04.2-764-amd64-debian.tar.gz
+
+#Installing some R packages, you need to start R using sudo, like:
+sudo R
+#then inside R run the following:
+if (!requireNamespace("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
+BiocManager::install(version = "3.19")
+BiocManager::install("tximport",update = FALSE, ask = FALSE)
+BiocManager::install("DESeq2",update = FALSE, ask = FALSE)
+BiocManager::install("topGO",update = FALSE,ask = FALSE)
+BiocManager::install("Rgraphviz",update = FALSE,ask = FALSE)
+
+install.packages(c('pheatmap','mclust','reshape2','ggplot2','readr'))
+install.packages(c("ggVennDiagram","mclust"))
