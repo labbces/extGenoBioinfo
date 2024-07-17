@@ -28,6 +28,14 @@ Prof. Dr. Diego Mauricio Riaño-Pachón é o líder do [Laboratório de Biologia
 
 ### Módulo 0 - Linux
 
+Este módulo é auto-instrucional e deve ser concluído de forma independente antes do início do Módulo 1. Os alunos precisam ter um laptop com Linux Ubuntu 22.04 ou superior, 16GB de RAM, 8 núcleos de processamento e 200GB de espaço de armazenamento. Além disso, é necessário executar o [script de instalação de software de bioinformática](setting_env.sh). 
+
+Os alunos também devem estudar com afinco o seguinte material, com o intuito de ficarem familiarizados e confortáveis no uso do sistema operacional Linux:
+
+- [The Unix Shell](https://swcarpentry.github.io/shell-novice/)
+- [Partes 1 e 2 do Unix and Shell Primer for Biologists](http://korflab.ucdavis.edu/Unix_and_Perl/current.html)
+- [Command-line Bootcamp](http://korflab.ucdavis.edu/bootcamp.html)
+
 ### Módulo 1 - Bancos de dados biológicos 
 
 [Neste módulo](modulos/modulo1.md), os alunos explorarão a evolução e a definição da bioinformática, examinando artigos que traçam a história da área e discutem seu impacto tanto globalmente quanto no Brasil. Serão apresentados aos conceitos de bancos de dados primários e secundários, com um foco especial nos recursos do National Center for Biotechnology Information e na cobertura de sequências de proteínas pelo AlphaFold Protein Structure Database. Os alunos também investigarão a anotação de genomas procarióticos na era dos metagenomas e como esses avanços impulsionam a ciência brasileira. O componente prático incluirá o uso de ferramentas básicas de Linux para operações com arquivos de texto, busca de dados em bancos de dados do NCBI, trabalho com sequências nos formatos Fasta e GenBank, e utilização do EMBOSS para recuperar sequências de grandes bancos de dados e extrair regiões específicas de um genoma. As discussões em classe serão guiadas por perguntas sobre a definição, origem, e principais avanços da bioinformática, assim como a identificação dos principais bancos de dados na área.
