@@ -315,6 +315,8 @@ sed -r 's/ | .*$//' TAIR10_pep_20101214_updated.mod.fasta > TAIR10_pep_20101214_
 
 ### The European Molecular Biology Open Software Souite - EMBOSS
 
+Alguns dos exercícios desta seção são baseados no [Tutorial do Usuário do EMBOSS](http://emboss.open-bio.org/html/use/ch04.html).
+
 [EMBOSS](http://emboss.open-bio.org/) é um pacote de software de análise gratuito, desenvolvido em C, voltado para as necessidades da comunidade de biologia molecular e bioinformática. O software lida automaticamente com dados em vários formatos e permite a obtenção de sequências diretamente da web. Além disso, o pacote inclui bibliotecas extensas, oferecendo uma plataforma para que outros cientistas possam desenvolver e compartilhar softwares, seguindo o espírito de código aberto. EMBOSS também integra diversos pacotes e ferramentas de análise de sequências em uma solução unificada.
 
 Todos os programas do EMBOSS são executados a partir da linha de comando do Unix. A utilidade do EMBOSS, chamada _wossname_, gera uma lista de todas as aplicações do EMBOSS.
@@ -383,7 +385,7 @@ wordcount      Count and extract unique words in molecular sequence(s)
 
 #### Recuperando Sequências de Bancos de Dados
 
-Os programas do EMBOSS podem ler sequências de vários bancos de dados, desde que a sequência seja referenciada no formato banco_de_dados:identificador. Este formato é um exemplo de Uniform Sequence Address (Endereço Uniforme de Sequência), ou USA.
+Os programas do EMBOSS podem ler sequências de vários bancos de dados, desde que a sequência seja referenciada no formato banco_de_dados:identificador. Este formato é um exemplo de Uniform Sequence Address [(Endereço Uniforme de Sequência), ou USA](http://emboss.open-bio.org/html/use/ch06s06.html).
 
 _seqret_ lê uma sequência e a escreve de volta. É provavelmente o programa mais utilizado do EMBOSS. Para extrair a sequência da proteína correspondente ao identificador **AT3G48060.1** do arquivo *TAIR10_pep_20101214_updated.fasta*, você pode usar o seguinte comando com o seqret do EMBOSS:
 
@@ -396,3 +398,34 @@ Este comando faz o seguinte:
 - outseq: define o arquivo de saída, onde a sequência extraída será salva (neste caso, AT3G48060.1.fasta).
 
 Após executar o comando, a sequência da proteína será extraída e salva no arquivo especificado.
+
+Usando ferramentas do Linux, identifique em qual linha do arquivo original está presente o identificador **AT3G48060.1**.
+
+Com o seqret, podemos reformatar sequências, por exemplo, convertendo uma sequência do formato FASTA para o formato GenBank. Você pode executar o seguinte comando:
+
+```bash
+seqret AT3G48060.1.fasta genbank::AT3G48060.1.gb
+```
+
+No entanto, lembre-se de que o seqret não cria informações adicionais. Compare a entrada no formato FASTA com o arquivo gerado em formato GenBank, e observe que o arquivo GenBank resultante conterá apenas as informações presentes no arquivo FASTA original.
+
+Programas do EMBOSS também podem lidar com múltiplas sequências. Vamos usar o programa infoseq para obter informações sobre as proteínas de Arabidopsis thaliana que estão presentes na mitocôndria.
+
+```bash
+infoseq TAIR10_pep_20101214_updated.fasta:ATMG*
+```
+
+Repare que podemos limitar quais campos são exibidos no resultado final. Vamos manter só o identificador da sequência
+
+```bash
+infoseq -only -name -length TAIR10_pep_20101214_updated.fasta:ATMG*
+```
+De forma semelhante, você pode recuperar várias sequências a partir de um arquivo multifasta. Outra alternativa, quando você tem uma lista de identificadores para serem recuperados, é:
+
+```bash
+seqret @selected.ids selected_seqs.fasta
+```
+
+Como você poderia verificar se há o mesmo número de identificadores nos arquivos _selected.ids_ e *selected_seqs.fasta*?
+
+
