@@ -312,3 +312,87 @@ As linhas com os identificadores neste arquivo são muito extensas, para muitos 
 ```
 sed -r 's/ | .*$//' TAIR10_pep_20101214_updated.mod.fasta > TAIR10_pep_20101214_updated.mod2.fasta
 ```
+
+### The European Molecular Biology Open Software Souite - EMBOSS
+
+[EMBOSS](http://emboss.open-bio.org/) é um pacote de software de análise gratuito, desenvolvido em C, voltado para as necessidades da comunidade de biologia molecular e bioinformática. O software lida automaticamente com dados em vários formatos e permite a obtenção de sequências diretamente da web. Além disso, o pacote inclui bibliotecas extensas, oferecendo uma plataforma para que outros cientistas possam desenvolver e compartilhar softwares, seguindo o espírito de código aberto. EMBOSS também integra diversos pacotes e ferramentas de análise de sequências em uma solução unificada.
+
+Todos os programas do EMBOSS são executados a partir da linha de comando do Unix. A utilidade do EMBOSS, chamada _wossname_, gera uma lista de todas as aplicações do EMBOSS.
+
+Primeiro, você deverá ativar o ambiente Conda que tem o EMBOSS instalado:
+
+```bash
+conda activate emboss
+```
+
+Repare que seu prompt mudou; agora aparece _(emboss)_, indicando que este é o nome do ambiente atualmente ativo.
+
+Digite _wossname_ no prompt do Linux e pressione a tecla Enter. Em seguida, digite a palavra _protein_ para listar todos os programas do EMBOSS que lidam de alguma forma com proteínas. Os programas do EMBOSS começam com uma breve descrição em uma linha e, depois, solicitam informações. Neste caso, você verá:
+
+```bash
+wossname
+Find programs by keywords in their short description
+Text to search for, or blank to list all programs: protein
+SEARCH FOR 'PROTEIN'
+antigenic      Find antigenic sites in proteins
+backtranambig  Back-translate a protein sequence to ambiguous nucleotide sequence
+backtranseq    Back-translate a protein sequence to a nucleotide sequence
+charge         Draw a protein charge plot
+checktrans     Report STOP codons and ORF statistics of a protein
+compseq        Calculate the composition of unique words in sequences
+emowse         Search protein sequences by digest fragment molecular weight
+epestfind      Find PEST motifs as potential proteolytic cleavage sites
+freak          Generate residue/base frequency table or plot
+fuzzpro        Search for patterns in protein sequences
+fuzztran       Search for patterns in protein sequences (translated)
+garnier        Predict protein secondary structure using GOR method
+helixturnhelix Identify nucleic acid-binding motifs in protein sequences
+hmoment        Calculate and plot hydrophobic moment for protein sequence(s)
+iep            Calculate the isoelectric point of proteins
+makeprotseq    Create random protein sequences
+maskambigprot  Mask all ambiguity characters in protein sequences with X
+msbar          Mutate a sequence
+mwcontam       Find weights common to multiple molecular weights files
+mwfilter       Filter noisy data from molecular weights file
+octanol        Draw a White-Wimley protein hydropathy plot
+oddcomp        Identify proteins with specified sequence word composition
+patmatdb       Search protein sequences with a sequence motif
+patmatmotifs   Scan a protein sequence with motifs from the PROSITE database
+pepcoil        Predict coiled coil regions in protein sequences
+pepdigest      Report on protein proteolytic enzyme or reagent cleavage sites
+pepinfo        Plot amino acid properties of a protein sequence in parallel
+pepnet         Draw a helical net for a protein sequence
+pepstats       Calculate statistics of protein properties
+pepwheel       Draw a helical wheel diagram for a protein sequence
+pepwindow      Draw a hydropathy plot for a protein sequence
+pepwindowall   Draw Kyte-Doolittle hydropathy plot for a protein alignment
+preg           Regular expression search of protein sequence(s)
+profit         Scan one or more sequences with a simple frequency matrix
+prophecy       Create frequency matrix or profile from a multiple alignment
+prophet        Scan one or more sequences with a Gribskov or Henikoff profile
+pscan          Scan protein sequence(s) with fingerprints from the PRINTS database
+psiphi         Calculates phi and psi torsion angles from protein coordinates
+showpep        Display protein sequences with features in pretty format
+shuffleseq     Shuffle a set of sequences maintaining composition
+sigcleave      Report on signal cleavage sites in a protein sequence
+tcode          Identify protein-coding regions using Fickett TESTCODE statistic
+tmap           Predict and plot transmembrane segments in protein sequences
+tranalign      Generate an alignment of nucleic coding regions from aligned proteins
+wordcount      Count and extract unique words in molecular sequence(s)
+```
+
+#### Recuperando Sequências de Bancos de Dados
+
+Os programas do EMBOSS podem ler sequências de vários bancos de dados, desde que a sequência seja referenciada no formato banco_de_dados:identificador. Este formato é um exemplo de Uniform Sequence Address (Endereço Uniforme de Sequência), ou USA.
+
+_seqret_ lê uma sequência e a escreve de volta. É provavelmente o programa mais utilizado do EMBOSS. Para extrair a sequência da proteína correspondente ao identificador **AT3G48060.1** do arquivo *TAIR10_pep_20101214_updated.fasta*, você pode usar o seguinte comando com o seqret do EMBOSS:
+
+```bash
+seqret -sequence TAIR10_pep_20101214_updated.fasta:AT3G48060.1 -outseq AT3G48060.1.fasta
+```
+Este comando faz o seguinte:
+
+- sequence: indica o arquivo de entrada e o identificador específico da sequência de interesse.
+- outseq: define o arquivo de saída, onde a sequência extraída será salva (neste caso, AT3G48060.1.fasta).
+
+Após executar o comando, a sequência da proteína será extraída e salva no arquivo especificado.
