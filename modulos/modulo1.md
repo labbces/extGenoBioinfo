@@ -138,6 +138,14 @@ library(readr)
 library(ggVennDiagram)
 ```
 
+## Buscas em bancos de dados web
+
+O [NCBI](https://www.ncbi.nlm.nih.gov/), uma agência dos EUA, reúne alguns dos bancos de dados mais utilizados nas biociências. Vamos explorar esses recursos para desenvolver habilidades avançadas de busca.
+
+Vamos procurar todos os artigos publicados pelo autor "Weisshaar, B" em 2009. Para isso, utilize os modificadores de busca DP (Data de Publicação) e AU (Autor) para restringir a busca aos campos apropriados. Você pode encontrar mais informações sobre os campos de busca disponíveis [neste link](https://pubmed.ncbi.nlm.nih.gov/help/#using-search-field-tags). Junto com seu instrutor, identifique os diferentes componentes das entradas dos dados recuperados.
+
+Explore as opções de busca avançada.
+
 ## Operações básicas em Bioinformática
 
 ### Ferramentas do Unix úteis na bioinformática.
