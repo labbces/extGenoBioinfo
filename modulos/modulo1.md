@@ -138,13 +138,30 @@ library(readr)
 library(ggVennDiagram)
 ```
 
-## Buscas em bancos de dados web
+## Buscas em bancos de dados web 
+
+### PubMed
 
 O [NCBI](https://www.ncbi.nlm.nih.gov/), uma agência dos EUA, reúne alguns dos bancos de dados mais utilizados nas biociências. Vamos explorar esses recursos para desenvolver habilidades avançadas de busca.
 
 Vamos procurar todos os artigos publicados pelo autor "Weisshaar, B" em 2009. Para isso, utilize os modificadores de busca DP (Data de Publicação) e AU (Autor) para restringir a busca aos campos apropriados. Você pode encontrar mais informações sobre os campos de busca disponíveis [neste link](https://pubmed.ncbi.nlm.nih.gov/help/#using-search-field-tags). Junto com seu instrutor, identifique os diferentes componentes das entradas dos dados recuperados.
 
-Explore as opções de busca avançada.
+Explore as opções de busca avançada. Realize a mesma busca usando as opcoes de busca avançada.
+
+### NCBI Datasets
+
+
+[NCBI Datasets](https://www.ncbi.nlm.nih.gov/datasets/) é um novo recurso que permite reunir dados de forma fácil a partir dos bancos de dados do NCBI. Você pode obter os dados por meio de três interfaces:
+
+- [O web site](https://www.ncbi.nlm.nih.gov/datasets/)
+- [Ferramentas da linha de comandos](https://www.ncbi.nlm.nih.gov/datasets/docs/v2/download-and-install/)
+- [A Interface de Programação de Aplicações - API](https://www.ncbi.nlm.nih.gov/datasets/docs/v2/reference-docs/rest-api/)
+
+Neste exercicio usaremos a interface web.
+
+Acesse a página de datasets do NCBI em https://www.ncbi.nlm.nih.gov/datasets/ e, na caixa de busca, digite o nome do gênero de lepidópteros Spodoptera. Vamos procurar todas as informações relacionadas a este gênero no NCBI. Isso deve levar você à página https://www.ncbi.nlm.nih.gov/datasets/taxonomy/7106/. Identifique todos os componentes de informação que são recuperados. Em seguida, clique no link "Genomes" para explorar todos os 20 genomas disponíveis.
+
+Na página de genomas, modifique as colunas selecionadas para incluir as seguintes: Assembly, Scaffold N50, Contig N50, BUSCO, Level e Release Date. Discuta com seu instrutor as informações apresentadas.
 
 ## Operações básicas em Bioinformática
 
