@@ -159,7 +159,7 @@ Explore as opções de busca avançada. Realize a mesma busca usando as opcoes d
 
 Neste exercicio usaremos a interface web.
 
-Acesse a página de datasets do NCBI em https://www.ncbi.nlm.nih.gov/datasets/ e, na caixa de busca, digite o nome do gênero de lepidópteros Spodoptera. Vamos procurar todas as informações relacionadas a este gênero no NCBI. Isso deve levar você à página https://www.ncbi.nlm.nih.gov/datasets/taxonomy/7106/. Identifique todos os componentes de informação que são recuperados. Em seguida, clique no link "Genomes" para explorar todos os 20 genomas disponíveis.
+Acesse a página de datasets do NCBI em https://www.ncbi.nlm.nih.gov/datasets/ e, na caixa de busca, digite o nome do gênero de lepidópteros [Spodoptera](https://en.wikipedia.org/wiki/Spodoptera). Vamos procurar todas as informações relacionadas a este gênero no NCBI. Isso deve levar você à página https://www.ncbi.nlm.nih.gov/datasets/taxonomy/7106/. Identifique todos os componentes de informação que são recuperados. Em seguida, clique no link "Genomes" para explorar todos os 20 genomas disponíveis.
 
 Na página de genomas, modifique as colunas selecionadas para incluir as seguintes: Assembly, Scaffold N50, Contig N50, BUSCO, Level e Release Date. Discuta com seu instrutor as informações apresentadas.
 
