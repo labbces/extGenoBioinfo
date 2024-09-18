@@ -163,6 +163,13 @@ Acesse a página de datasets do NCBI em https://www.ncbi.nlm.nih.gov/datasets/ e
 
 Na página de genomas, modifique as colunas selecionadas para incluir as seguintes: Assembly, Scaffold N50, Contig N50, BUSCO, Level e Release Date. Discuta com seu instrutor as informações apresentadas.
 
+Vamos baixar o genoma de referência da Spodoptera frugiperda, identificado pelo nome de assembly AGI-APGP_CSIRO_Sfru_2.0. Na página desse genoma, localize o link FTP e clique nele. Na página com todos os arquivos do genoma, procure pelo arquivo *GCF_023101765.2_AGI-APGP_CSIRO_Sfru_2.0_genomic*.fna.gz e baixe-o usando o software _wget_.
+
+```bash
+cd
+wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/023/101/765/GCF_023101765.2_AGI-APGP_CSIRO_Sfru_2.0/GCF_023101765.2_AGI-APGP_CSIRO_Sfru_2.0_genomic.fna.gz
+```
+
 ## Operações básicas em Bioinformática
 
 ### Ferramentas do Unix úteis na bioinformática.
@@ -196,6 +203,15 @@ ls -l -h TAIR10_pep_20101214_updated.fasta
 ```
 
 O que faz a opção -h no comando 'ls'? Consulte a página de manual do _ls_ para saber.
+
+Aproveite e mova o arquivo *GCF_023101765.2_AGI-APGP_CSIRO_Sfru_2.0_genomic.fna.gz*, que deve estar na sua pasta home, para o diretório _~/dia1_:
+
+```bash
+mv ~/GCF_023101765.2_AGI-APGP_CSIRO_Sfru_2.0_genomic.fna.gz ~/dia1
+cd ~/dia1/
+ls -l ~/dia1
+gunzip GCF_023101765.2_AGI-APGP_CSIRO_Sfru_2.0_genomic.fna.gz
+```
 
 Na maioria das vezes, é importante visualizar o conteúdo do arquivo, seja no início ou no final.  No entanto, devido ao grande tamanho dos arquivos com os quais normalmente se trabalha, não é conveniente abrir o arquivo com nenhum editor de texto, pois isso pode reduzir o tempo de resposta do computador. Podemos visualizar as primeiras ou ultimas linhas de um arquivo de texto com os comandos  _head_ e _tail_ respetivamente
 
@@ -454,3 +470,11 @@ seqret @selected.ids selected_seqs.fasta
 Como você poderia verificar se há o mesmo número de identificadores nos arquivos _selected.ids_ e *selected_seqs.fasta*?
 
 
+#### Extrair uma região específica de um genoma
+
+Vamos extrair do genoma a região genômica que codifica a **cytochrome P450**, uma enzima que catalisa um grande número de reações, incluindo hidroxilação, epoxidação e oxidação. Em insetos, essa enzima está envolvida no metabolismo endógeno e em mecanismos de detoxificação (como a metabolização de inseticidas). Este gene específico está localizado no _cromossomo 2_ (NC_064213.1), nas posições 7455237 até 7464707, e é identificado como **cytochrome P450 9e2**.
+
+```bash
+extractseq GCF_023101765.2_AGI-APGP_CSIRO_Sfru_2.0_genomic.fna:NC_064213.1 -regions '7455237-7464707' cytocromoP450.gene.fasta
+infoseq cytocromoP450.gene.fasta
+```
