@@ -478,3 +478,9 @@ Vamos extrair do genoma a região genômica que codifica a **cytochrome P450**, 
 extractseq GCF_023101765.2_AGI-APGP_CSIRO_Sfru_2.0_genomic.fna:NC_064213.1 -regions '7455237-7464707' cytocromoP450.gene.fasta
 infoseq cytocromoP450.gene.fasta
 ```
+
+No final da sessão, lembre-se de desativar o seu ambiente Conda.
+
+```bash
+conda deactivate
+```
