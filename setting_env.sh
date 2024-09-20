@@ -98,3 +98,8 @@ BiocManager::install("Rgraphviz",update = FALSE,ask = FALSE)
 
 install.packages(c('pheatmap','mclust','reshape2','ggplot2','readr'))
 install.packages(c("ggVennDiagram","mclust"))
+
+###NEW 19092024
+conda activate transcriptomics
+conda install hisat2 bwa ffq
+conda deactivate
