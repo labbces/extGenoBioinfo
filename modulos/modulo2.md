@@ -47,12 +47,26 @@ scaffold_1  maker exon  1000  1500  .  +  .  gene_id "gene0001"; transcript_id "
 No módulo anterior, você descarregou o genoma de Spodoptera frugiperda, que ficou armazenado na pasta `~/dia1`. Por favor, mova esse arquivo para a pasta `~/dia2`, entre nessa pasta e descarregue a anotação do mesmo genoma em formato GFF usando o seguinte comando:
 
 ```bash
+cd ~/dia2/
 wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/023/101/765/GCF_023101765.2_AGI-APGP_CSIRO_Sfru_2.0/GCF_023101765.2_AGI-APGP_CSIRO_Sfru_2.0_genomic.gff.gz
 gunzip GCF_023101765.2_AGI-APGP_CSIRO_Sfru_2.0_genomic.gff.gz
 ```
 
 Visualize o conteúdo do arquivo descarregado usando o comando `less` e identifique cada uma das colunas mencionadas acima.
 
-Quais valores podem aparecer na coluna de **Features**? Podemos usar linux para ter uma lista dos valor únicos que aparecem na coluna featrure do arquivo, repara que essa é a terceira coluna:
+Quais valores podem aparecer na coluna de **Features**? Podemos usar o Linux para obter uma lista dos valores únicos que aparecem na coluna Feature do arquivo. Note que essa é a terceira coluna no arquivo:
 
+```bash
+cat GCF_023101765.2_AGI-APGP_CSIRO_Sfru_2.0_genomic.gff.gz|grep -v "#"| cut -f 3|sort -u
+```
+
+Você também pode contar quantas vezes cada um desses valores aparece no arquivo de anotação:
+
+```bash
+cat GCF_023101765.2_AGI-APGP_CSIRO_Sfru_2.0_genomic.gff.gz|grep -v "#"| cut -f 3|sort | uniq -c
+```
+
+Repare no número de features do tipo exon e CDS que aparecem no arquivo. Por que esses números são diferentes?
+
+Vamos extrair uma regiao de interesse do arquivo GFF
 ### Arquivos de mapeamento de leituras
