@@ -103,3 +103,9 @@ install.packages(c("ggVennDiagram","mclust"))
 conda activate transcriptomics
 conda install hisat2 bwa ffq
 conda deactivate
+
+sudo apt install tabix
+
+conda activate jupiterplot
+conda install bioconda::bamtools
+conda deactivate
