@@ -1,1 +1,8 @@
 *.fasta
+*.fastq.gz
+*.ht2
+*.bam
+*.bam.bai
+*.fai
+GCF_023101765.2_AGI-APGP_CSIRO_Sfru_2.0_genomic*
+*refstats
