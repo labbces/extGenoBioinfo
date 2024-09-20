@@ -104,8 +104,10 @@ conda activate transcriptomics
 conda install hisat2 bwa ffq
 conda deactivate
 
-sudo apt install tabix
+sudo apt install tabix genometools
 
 conda activate jupiterplot
 conda install bioconda::bamtools
 conda deactivate
+
+conda create -y -n bedtools -c bioconda bedtools
