@@ -200,6 +200,7 @@ O arquivo BAM não pode ser inspecionado diretamente com os visualizadores de te
 ```bash
 conda activate igv
 samtools view ~/dia2/BAM/SRR29288667_RNASeq_NC_064213.1_sorted.bam|less
+conda deactivate
 ```
 
 O comando acima exibirá as leituras alinhadas no arquivo BAM. O formato SAM (Sequence Alignment/Map) possui uma estrutura tabular e contém informações detalhadas sobre a qualidade das leituras e o alinhamento. Cada linha no arquivo SAM representa uma leitura alinhada e é composta por diversos campos separados por tabulações, incluindo:
@@ -248,6 +249,8 @@ SRR29288667.583533      409     NC_064213.1     9949    1       120M    =       
 | **YT:Z:UP** | YT:Z:UP | **Tipo de Alinhamento (YT):** `UP` geralmente indica um alinhamento único (Unique alignment). |
 | **NH:i:5** | NH:i:5 | **Número de Alinhamentos (NH):** Indica o número total de alinhamentos diferentes encontrados para esta leitura. `5` sugere que esta leitura se alinha em cinco locais diferentes na referência. |
 
-Você pode usar [esta calculadora](https://broadinstitute.github.io/picard/explain-flags.html) de Flags do Picard para identificar o significado de cada flag no formato SAM/BAM. Selecione algumas entradas do seu arquivo BAM e interprete-as utilizando a ferramenta.
+Você pode usar [esta calculadora](https://broadinstitute.github.io/picard/explain-flags.html) de Flags do Picard para identificar o significado de cada flag no formato SAM/BAM. Selecione algumas entradas do seu arquivo BAM e interprete-as utilizando a ferramenta. Inspecione os outros arquivos BAM. Quais diferenças você encontra?
 
 Se tiver interesse em aprofundar seu entendimento, você pode conhecer o significado detalhado de cada bit do campo FLAG [aqui](https://www.samformat.info/sam-format-flag).
+
+Agora, inicie o programa IGV, um software gráfico desenvolvido em linguagem de programação Java, e siga as instruções do seu instrutor. Verifique a região do gene **cytochrome P450 9e2**. Verifique a região: NC_064213.1:6,359,442-6,363,364, encontra algo estranho? O que você acha que pode ser? O que significa o track 'junctions' que aparece junto aos dados de RNASeq? No track dos dados de Illumina genômicos e RNASeq, ative a opcão "View as pairs". O que você observa?
