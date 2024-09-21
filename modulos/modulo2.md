@@ -1,10 +1,11 @@
 # Módulo 2 - Trabalho com dados genômicos
 
+
 ## Visualização de dados genômicos
 
 ### Arquivos de anotação
 
-Os formatos [GFF (General Feature Format) e GTF (Gene Transfer Format)](https://www.ensembl.org/info/website/upload/gff.html) são amplamente utilizados para anotar genomas. Estes arquivos descrevem as localizações de diferentes elementos genômicos, como genes, exons, introns e outras características, usando uma estrutura tabular que pode ser visualizada no terminal Linux. Vmmos explorar cada formato com comandos do terminal.
+Os formatos [GFF (General Feature Format) e GTF (Gene Transfer Format)](https://www.ensembl.org/info/website/upload/gff.html) são amplamente utilizados para anotar genomas. Estes arquivos descrevem as localizações de diferentes elementos genômicos, como genes, exons, introns e outras características, usando uma estrutura tabular que pode ser visualizada no terminal Linux.
 
 #### Estrutura Básica dos Arquivos GFF e GTF
 
@@ -57,16 +58,39 @@ Visualize o conteúdo do arquivo descarregado usando o comando `less` e identifi
 Quais valores podem aparecer na coluna de **Features**? Podemos usar o Linux para obter uma lista dos valores únicos que aparecem na coluna Feature do arquivo. Note que essa é a terceira coluna no arquivo:
 
 ```bash
-cat GCF_023101765.2_AGI-APGP_CSIRO_Sfru_2.0_genomic.gff.gz|grep -v "#"| cut -f 3|sort -u
+cat GCF_023101765.2_AGI-APGP_CSIRO_Sfru_2.0_genomic.gff|grep -v "#"| cut -f 3|sort -u
 ```
 
 Você também pode contar quantas vezes cada um desses valores aparece no arquivo de anotação:
 
 ```bash
-cat GCF_023101765.2_AGI-APGP_CSIRO_Sfru_2.0_genomic.gff.gz|grep -v "#"| cut -f 3|sort | uniq -c
+cat GCF_023101765.2_AGI-APGP_CSIRO_Sfru_2.0_genomic.gff|grep -v "#"| cut -f 3|sort | uniq -c
 ```
 
 Repare no número de features do tipo exon e CDS que aparecem no arquivo. Por que esses números são diferentes?
 
-Vamos extrair uma regiao de interesse do arquivo GFF
+A seguinte figura pode auxiliar nessa interpretação:
+
+![Eukaryotic gene](../Figs/EukaryoticGene.png)
+
+Vamos extrair uma região de interesse do arquivo GFF. Confira o arquivo [test.bed](files/test.bed), faça o download e coloque-o na pasta `~/dia2`. Esse é um tipo de arquivo amplamente utilizado para representar regiões do genoma. Especificamente, agora temos a posição do gene **cytochrome P450 9e2**, sobre o qual discutimos no módulo passado. Vamos extrair todas as features que estão dentro desse intervalo. Para isso, utilizaremos o comando `bedtools intersect`:
+
+
+```bash
+conda activate bedtools
+cd ~/dia2/
+bedtools intersect -a GCF_023101765.2_AGI-APGP_CSIRO_Sfru_2.0_genomic.gff -b extGenoBioinfo/modulos/files/test.bed > cytochromeP4509e2.gff
+echo '##gff-version 3' | cat - cytochromeP4509e2.gff > cytochromeP4509e2b.gff
+mv cytochromeP4509e2b.gff cytochromeP4509e2.gff
+conda deactivate
+```
+
+Inspecione o arquivo resultante cytochromeP4509e2.gff. Agora, vamos gerar um gráfico dessa região usando a ferramenta genometools, especificamente a função [annotation sketch](https://genometools.org/annotationsketch.html):
+    
+```bash
+gt sketch cytochromeP4509e2.png cytochromeP4509e2.gff
+```
+
+Identifique na figura as UTRs (regiões não traduzidas), a região codificadora (CDS) e os éxons do gene.
+
 ### Arquivos de mapeamento de leituras
