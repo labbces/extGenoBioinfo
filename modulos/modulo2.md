@@ -1,5 +1,74 @@
 # Módulo 2 - Trabalho com dados genômicos
 
+## Exercicios de cobertura de sequenciamento
+
+### Cobertura de Sequenciamento (Profundidade):
+
+- **Definição:** Número médio de vezes que cada base no genoma é lida durante o sequenciamento.
+- **Importância:** Coberturas mais altas aumentam a confiança na precisão da montagem do genoma e na detecção de variantes.
+
+Fórmula da Cobertura
+
+$$
+\text{Cobertura} = \frac{\text{Total de Bases Sequenciadas}}{\text{Tamanho do Genoma}}
+$$
+
+Rearranjando para encontrar o Total de Bases Sequenciadas:
+
+$$
+\text{Total de Bases Sequenciadas} = \text{Cobertura (C)} \times \text{Tamanho do Genoma}
+$$
+
+### Visão Geral das Plataformas de Sequenciamento
+
+#### Sequenciamento Illumina
+- **Comprimento de Leitura:** Tipicamente leituras pareadas de 150 bp (2 × 150 bp).
+- **Vantagens:** Alto rendimento, baixa taxa de erro (~0,1%), custo efetivo para projetos em larga escala.
+- **Considerações:** Leituras curtas podem complicar a montagem em regiões repetitivas.
+
+#### Sequenciamento PacBio HiFi
+- **Comprimento de Leitura:** Leituras de alta fidelidade com média de ~15–25 kb.
+- **Vantagens:** Leituras longas com alta precisão (~99,9%), excelente para resolver regiões complexas.
+- **Considerações:** Custo por base mais alto, menor rendimento comparado ao Illumina.
+
+### Exercício 1: Cálculo da quantidade de dados para projetos de sequenciamento
+
+Calcule a quantidade de dados necessários para realizar o sequenciamento dos seguintes organismos com os níveis de cobertura desejados. No caso de sequenciamento Illumina, considere um tamanho de leitura de 150 bp e sequenciamento pareado, para o sequenciamento PacBio HiFi, considere um tamanho de leitura de 20 kb. Calcule também o número de fragmentos que precisam ser lidos/gerados para atingir a cobertura desejada.
+
+| Genoma               | Tamanho (Mb) | Cobertura Illumina | Cobertura PacBio HiFi |
+|:---------------------|-------------:|-------------------------------:|-------------------------------:|
+| Bactéria             |            5 |               100x |                            30x |
+| Levedura             |           12 |                80x |                            25x |
+| Planta (Arabidopsis) |          125 |                60x |                            20x |
+| Humano               |        3.200 |                30x |                            30x |
+
+Como teria que mudar a quantidade de dados gerados para o genoma humano se o interesse fosse resolver os dois haplótipos do genoma? E na planta?
+
+- Como o tamanho do genoma afeta a quantidade total de dados de sequenciamento necessários?
+
+- Por que diferentes níveis de cobertura são escolhidos para o sequenciamento Illumina e PacBio HiFi?
+
+- Quais são as compensações entre usar Illumina e PacBio HiFi para o sequenciamento de genomas?
+
+### Considerações Adicionais
+
+- Taxas de Erro: Embora ambas as plataformas tenham baixas taxas de erro, os tipos de erros diferem.
+- Complexidade de Montagem: Leituras longas do PacBio HiFi podem simplificar a montagem do genoma, especialmente para regiões repetitivas.
+- Fatores de Custo: Restrições orçamentárias podem influenciar a escolha da plataforma e a cobertura alcançável.
+
+### Capacidade de Sequenciamento dos Sistemas PacBio Revio e Illumina NovaSeq 4000
+
+Nesta sessão, vamos calcular quantos genomas de diferentes tamanhos podem ser sequenciados simultaneamente nos sistemas PacBio Revio e Illumina NovaSeq 4000, com base nas capacidades máximas de produção de dados e coberturas mínimas desejadas.
+
+### PacBio Revio
+- Capacidade de Dados: Até 90 Gb de leituras de 20–25 kb em uma única corrida de sequenciamento.
+- Cobertura Mínima Almejada: 25×
+
+### Illumina NovaSeq 4000 com Química S4
+- Capacidade de Dados: Até 3.000 Gb (3 Tb) de dados em uma única corrida de sequenciamento.
+- Cobertura Mínima Almejada: 50×
+
+Determinar quantos genomas de bactéria, levedura, planta e humano podem ser sequenciados simultaneamente com a cobertura mínima especificada.
 
 ## Visualização de dados genômicos
 
