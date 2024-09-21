@@ -163,3 +163,91 @@ gt sketch cytochromeP4509e2.png cytochromeP4509e2.gff
 Identifique na figura as UTRs (regiões não traduzidas), a região codificadora (CDS) e os éxons do gene.
 
 ### Arquivos de mapeamento de leituras
+
+Na sua pasta `~/dia2`, descarregue a pasta inteira: https://labbces.cena.usp.br/shared/extGenoBioinfo/BAM/
+
+```bash
+cd ~/dia2/
+wget -r -np -nH --cut-dirs=4 -R "index.html*" https://labbces.cena.usp.br/shared/extGenoBioinfo/BAM/ -P ~/dia2/BAM
+```
+
+Deveria ter os seguintes arquivos na pasta `~/dia2/BAM/`:
+
+```bash
+$ ls -1 ~/dia2/BAM/
+GCF_023101765.2_AGI-APGP_CSIRO_Sfru_2.0_genomic.gff.gz
+GCF_023101765.2_AGI-APGP_CSIRO_Sfru_2.0_genomic.sorted.gff.gz
+GCF_023101765.2_AGI-APGP_CSIRO_Sfru_2.0_genomic.sorted.gff.gz.tbi
+NC_064213.1.fasta
+NC_064213.1.fasta.fai
+robots.txt
+SRR12072097_PacBio_NC_064213.1_sorted.bam
+SRR12072097_PacBio_NC_064213.1_sorted.bam.bai
+SRR29141966_Illumina_NC_064213.1_sorted.bam
+SRR29141966_Illumina_NC_064213.1_sorted.bam.bai
+SRR29288667_RNASeq_NC_064213.1_sorted.bam
+SRR29288667_RNASeq_NC_064213.1_sorted.bam.bai
+```
+
+Nessa pasta, você encontrará arquivos FASTA e GFF que já conhece, mas também arquivos BAM. O formato BAM é um formato binário que armazena alinhamentos de sequências de leituras de sequenciamento de DNA. O arquivo BAM é indexado para permitir acesso rápido a regiões específicas do genoma, e o arquivo BAI é o índice correspondente do arquivo BAM.
+
+Existem três arquivos BAM diferentes, um para cada tipo de sequenciamento: PacBio, Illumina e RNA-Seq. As leituras correspondentes foram alinhadas ao genoma da Spodoptera frugiperda (GCF_023101765.2_AGI-APGP_CSIRO_Sfru_2.0_genomic.fna).
+
+Hoje não veremos como gerar esses arquivos, mas, se tiver curiosidade, pode consultar o script que foi [usado](files/generateBAM.sh). Por enquanto, vamos visualizar esses arquivos na linha de comandos e usando o software [Integrative Genomics Viever (IGV)](https://igv.org/).
+
+O arquivo BAM não pode ser inspecionado diretamente com os visualizadores de texto que usamos até o momento, pois está em formato binário. Para visualizar o conteúdo do arquivo BAM, podemos usar o comando `samtools view`, que converte o arquivo BAM em um formato legível (SAM):
+
+```bash
+conda activate igv
+samtools view ~/dia2/BAM/SRR29288667_RNASeq_NC_064213.1_sorted.bam|less
+```
+
+O comando acima exibirá as leituras alinhadas no arquivo BAM. O formato SAM (Sequence Alignment/Map) possui uma estrutura tabular e contém informações detalhadas sobre a qualidade das leituras e o alinhamento. Cada linha no arquivo SAM representa uma leitura alinhada e é composta por diversos campos separados por tabulações, incluindo:
+
+- QNAME: Identificador da leitura.
+- FLAG: Informações sobre o alinhamento, como se a leitura está mapeada, se é parte de um par, entre outros.
+- RNAME: Nome da referência genômica onde a leitura está alinhada.
+- POS: Posição inicial do alinhamento na referência.
+- MAPQ: Qualidade do mapeamento.
+- CIGAR: Descrição do alinhamento da leitura em relação à referência (matches, inserções, deleções, etc.).
+- RNEXT: Nome da referência da próxima leitura (se aplicável).
+- PNEXT: Posição da próxima leitura.
+- TLEN: Comprimento do fragmento inserido.
+- SEQ: Sequência da leitura.
+- QUAL: Pontuação de qualidade da sequência.
+
+Além desses campos obrigatórios, o formato SAM pode incluir campos opcionais que fornecem informações adicionais, como marcações de variantes, detalhes de modificações químicas ou anotações específicas do experimento.
+
+Vamos olhar uma das linhas do nosso arquivo BAM:
+
+```
+SRR29288667.583533      409     NC_064213.1     9949    1       120M    =       9949    0       ACCGTGCAGCACCGGTTGCGCGCTCCTTGGCGGCGACCTTTTCTTCTAGGTCCTTTTGAACCTCCACCCGCTTTGCTTGCGCCAGAGACGCCCTCAATTGGCGTTGAGCCTCATCAAGTC        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF:F:FFFFFFFFF:FF:FFF:FFFFFFFFFFFFFFFFFFFF,FFFFFF,FFF:FFF:F:FFFFFFF,FF,FFFFFFF::FFFFFFFFF     AS:i:0  ZS:i:0  XN:i:0  XM:i:0  XO:i:0  XG:i:0  NM:i:0  MD:Z:120        YT:Z:UP NH:i:5
+```
+
+| **Campo** | **Valor** | **Descrição** |
+|---|---|---|
+| **QNAME**  | SRR29288667.583533  | **Identificador da Leitura:** Nome único que identifica a leitura sequenciada. |
+| **FLAG**   | 409 | **Flags:** Valores numéricos que fornecem informações sobre o alinhamento, como orientação, se está emparelhada, se está mapeada, etc.  |
+| **RNAME** | NC_064213.1 | **Nome da Referência:** Identificador do cromossomo ou sequência de referência onde a leitura está alinhada. |
+| **POS**  | 9949 | **Posição:** Posição 1-based na referência onde o alinhamento da leitura começa. |
+| **MAPQ** | 1 | **Qualidade do Mapeamento:** Pontuação que indica a confiança do alinhamento (0 a 60, onde valores mais altos indicam maior confiança). |
+| **CIGAR** | 120M  | **CIGAR String:** Representa o alinhamento da leitura com a referência. "120M" indica que as 120 bases da leitura estão alinhadas (matches). |
+| **RNEXT** | = | **Nome da Referência da Próxima Leitura:** Indica a referência onde a próxima leitura do par está alinhada. "=" significa que está na mesma referência que `RNAME`. |
+| **PNEXT** | 9949 | **Posição da Próxima Leitura:** Posição 1-based na referência onde a próxima leitura do par começa. |
+| **TLEN** | 0 | **Comprimento do Fragmento Inserido:** Diferença entre as posições das leituras emparelhadas. "0" indica que não há inserção ou a posição é igual. |
+| **SEQ** | ACCGTGCAGCACCGGTTGCGCGCTCCTTGGCGG... | **Sequência da Leitura:** Sequência de nucleotídeos da leitura alinhada. |
+| **QUAL** | FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF... | **Qualidade da Sequência:** Pontuações de qualidade para cada base na sequência (`F` geralmente indica alta qualidade). |
+| **AS:i:0** | AS:i:0 | **Score de Alinhamento (AS):** Indica a pontuação do alinhamento, onde valores mais altos representam melhores alinhamentos. Neste caso, 0 pode indicar um alinhamento padrão ou sem pontuação adicional. |
+| **ZS:i:0** | ZS:i:0 | **Campo Personalizado (ZS):** Utilizado para informações específicas do pipeline de sequenciamento. Aqui, `0` pode indicar ausência de uma característica específica.  |
+| **XN:i:0** | XN:i:0 | **Campo Personalizado (XN):** Usado para armazenar informações adicionais como número de mismatches extras. `0` indica ausência dessas características. |
+| **XM:i:0** | XM:i:0 | **Campo Personalizado (XM):** Usado para armazenar informações adicionais como inserções extras. `0` indica ausência dessas características. |
+| **XO:i:0** | XO:i:0 | **Campo Personalizado (XO):** Usado para armazenar informações adicionais como deleções extras. `0` indica ausência dessas características. |
+| **XG:i:0** | XG:i:0 | **Campo Personalizado (XG):** Usado para armazenar informações adicionais sobre diferenças genéticas. `0` indica ausência dessas características. |
+| **NM:i:0** | NM:i:0 | **Número de Mismatches (NM):** Indica o número de diferenças entre a leitura e a referência. `0` significa que a leitura está perfeitamente alinhada sem mismatches. |
+| **MD:Z:120** | MD:Z:120 | **Detalhes do Mismatch (MD):** Fornece informações sobre as diferenças específicas entre a leitura e a referência. `120` indica que as 120 bases estão alinhadas sem diferenças. |
+| **YT:Z:UP** | YT:Z:UP | **Tipo de Alinhamento (YT):** `UP` geralmente indica um alinhamento único (Unique alignment). |
+| **NH:i:5** | NH:i:5 | **Número de Alinhamentos (NH):** Indica o número total de alinhamentos diferentes encontrados para esta leitura. `5` sugere que esta leitura se alinha em cinco locais diferentes na referência. |
+
+Você pode usar [esta calculadora](https://broadinstitute.github.io/picard/explain-flags.html) de Flags do Picard para identificar o significado de cada flag no formato SAM/BAM. Selecione algumas entradas do seu arquivo BAM e interprete-as utilizando a ferramenta.
+
+Se tiver interesse em aprofundar seu entendimento, você pode conhecer o significado detalhado de cada bit do campo FLAG [aqui](https://www.samformat.info/sam-format-flag).
