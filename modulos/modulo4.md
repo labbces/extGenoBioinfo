@@ -21,7 +21,7 @@ Observe que os arquivos estão compactados, isso é sempre feito para economizar
 
 Baixe os arquivos e certifique-se de movê-los para a pasta `~/dia4`.
 
-O comando `less` é capaz de visualizar até mesmo arquivos compactados. Vamos inspecionar o arquivo qc1.fq.gz, que deve estar na sua pasta `~/dia3`.
+O comando `less` é capaz de visualizar até mesmo arquivos compactados. Vamos inspecionar o arquivo qc1.fq.gz, que deve estar na sua pasta `~/dia4`.
 
 ```
 cd ~/dia4
@@ -182,7 +182,7 @@ cd FastK && make
 install -c FastK Fastrm Fastmv Fastcp Fastmerge Histex Tabex Profex Logex Vennex Symmex Haplex Homex Fastcat /home/cen5789/miniconda3/envs/genomescope2/bin/
 FastK # Teste se a instalação foi bem-sucedida.
 cd ../.. 
-pwd # Você tem que estar na pasta ~/dia3/espectro
+pwd # Você tem que estar na pasta ~/dia4/espectro
 
 ```
 
