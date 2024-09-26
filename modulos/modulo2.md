@@ -148,7 +148,7 @@ Vamos extrair uma região de interesse do arquivo GFF. Confira o arquivo [test.b
 ```bash
 conda activate bedtools
 cd ~/dia2/
-bedtools intersect -a GCF_023101765.2_AGI-APGP_CSIRO_Sfru_2.0_genomic.gff -b extGenoBioinfo/modulos/files/test.bed > cytochromeP4509e2.gff
+bedtools intersect -a GCF_023101765.2_AGI-APGP_CSIRO_Sfru_2.0_genomic.gff -b test.bed > cytochromeP4509e2.gff
 echo '##gff-version 3' | cat - cytochromeP4509e2.gff > cytochromeP4509e2b.gff
 mv cytochromeP4509e2b.gff cytochromeP4509e2.gff
 conda deactivate
