@@ -84,7 +84,7 @@ Para realizar a limpeza, podemos utilizar o programa `bbduk.sh` da suíte `bbmap
 ```
 conda deactivate
 conda activate bbmap
-bbduk.sh in=qc3.fq.gz ref=adapters.fa out=qc3.clean.fq.gz ktrim=r qtrim=w trimq=20 minlength=70 k=15
+bbduk.sh in=qc3.fq.gz ref=adapters out=qc3.clean.fq.gz ktrim=r qtrim=w trimq=20 minlength=70 k=15
 conda deactivate
 ```
 
