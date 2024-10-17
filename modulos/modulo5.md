@@ -33,7 +33,7 @@ FastK -v -t16 -k31 -M16 -T4 SRR25033384.filt.fastq.gz -NSRR25033384_k31
 Histex -G SRR25033384_k31 > SRR25033384_k31.histo
 genomescope2 --input SRR25033384_k31.histo --output SRR25033384_k31.genomescope2 --ploidy 2 --kmer_length 31 --name_prefix SRR25033384_k31
 smudgeplot.py hetmers -L 18 -t 4 --verbose -o SRR25033384_k31_pairs SRR25033384_k31.ktab
-smudgeplot.py plot -t SRR25033384_k31 -o SRR25033384_k31_smudgeplot SRR25033384_k31_pairs_text.smu
+smudgeplot.py all -o SRR25033384_k17_smudgeplot SRR25033384_k31_pairs_text.smu
 conda deactivate
 ```
 
