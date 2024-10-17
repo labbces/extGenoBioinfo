@@ -242,8 +242,7 @@ head SRR926312_k17_pairs_text.smu
 Se você ver três colunas, é um bom sinal. Você pode prosseguir para finalmente plotar o SmudgePlot. Eu encorajaria você a executar `smudgeplot plot -h` para ver todas as opções e entender o que elas significam, mas um comando minimalista como este deve funcionar:
 
 ```
-smudgeplot.py plot -t SRR926312_k17 -o SRR926312_k17_smudgeplot SRR926312_k17_pairs_text.smu
-
+smudgeplot.py all -o SRR926312_k17_smudgeplot SRR926312_k17_pairs_text.smu
 ```
 
 ![SRR926312_k17_smudgeplot_smudgeplot_log10](../Figs/SRR926312_k17_smudgeplot_smudgeplot_log10.png)
