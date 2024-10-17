@@ -38,7 +38,7 @@ conda create -y -n sratoolkit -c bioconda sra-tools
 conda create -y -n tidk -c bioconda tidk
 conda create -y -n compleasm -c conda-forge -c bioconda compleasm
 conda create -y -n merqury -c bioconda merqury
-conda create -y -n jupiterplot -c bioconda circos samtools minimap2
+conda create -y -n jupiterplot -c bioconda circos circos-tools samtools minimap2
 conda create -y -n igv -c bioconda igv samtools
 conda create -y -n eggnogmapper -c bioconda -c conda-forge eggnog-mapper
 conda create -y -n transcriptomics -c conda-forge -c bioconda ffq python fastqc bbmap multiqc
