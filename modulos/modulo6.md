@@ -76,7 +76,7 @@ Você pode encontrar o resultado da previsão de genes na pasta GALBA. A saída 
 - galba.codingseq
 - galba.aa
 
-A previsão de genes para GALBA pode levar um tempo considerável. Portanto, estou disponibilizando os principais arquivos de resultados neste [arquivo](modulos/files/GALBA_annotation.tar.gz).
+A previsão de genes para GALBA pode levar um tempo considerável. Portanto, estou disponibilizando os principais arquivos de resultados neste [arquivo](/modulos/files/GALBA_annotation.tar.gz).
 
 Por favor, analise esses arquivos para compreender o conteúdo presente. Discuta com seus colegas e seu professor para obter uma compreensão completa.
 
