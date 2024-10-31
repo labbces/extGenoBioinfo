@@ -23,6 +23,11 @@ rm -rf ~/miniconda3/miniconda.sh
 conda config --add channels conda-forge
 conda config --add channels bioconda
 
+#Installing singularity
+conda create -y -n singularitycew -c wallaulab singularityce conda-forge::cni-plugins
+ln -s /usr/bin/mksquashfs /usr/local/bin/
+ln -s /usr/bin/unsquashfs /usr/local/bin/
+
 #Installing Bioinformatics Software using conda
 # Most of the packages will be installed using independent environments
 
