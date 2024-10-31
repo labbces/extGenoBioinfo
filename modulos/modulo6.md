@@ -13,7 +13,7 @@ Antes de realizar a predição de genes, é imperativo mascarar os scaffolds/con
 Se você já possui uma boa biblioteca das repetições presentes em seu genoma, pode utilizar o [NGSEP](https://github.com/NGSEP/NGSEPcore) como um mascarador rápido, nos modos TransposonsFinder e GenomeAssemblyMask. Para isso, usaremos a biblioteca do [Dfam](https://www.dfam.org/) que temos disponível em formato [FASTA](https://labbces.cena.usp.br/shared/CEN5789/dia6/Dfam_curatedonly.fasta). Observe que, primeiro, é necessário acessar o repositório do NGSEP e fazer o download do aplicativo através do link de Releases. Baixe tanto o software quanto a biblioteca do Dfam na pasta "dia6". Caso a pasta não exista, crie-a.
 
 ```
-conda activate redotable
+#Certifiquese de ter o java instalado
 mkdir -p ~/dia6
 cd ~/dia6
 wget https://labbces.cena.usp.br/shared/CEN5789/dia6/Dfam_curatedonly.fasta
@@ -23,7 +23,7 @@ java -jar NGSEPcore_5.0.0.jar TransposonsFinder -i NRRLY27205.asm.bp.hap1.p_ctg.
 java -jar NGSEPcore_5.0.0.jar GenomeAssemblyMask -i NRRLY27205.asm.bp.hap1.p_ctg.g100kbp.fasta -o NRRLY27205.asm.bp.hap1.p_ctg.g100kbp.softmasked.fa -d NRRLY27205.asm.bp.hap1.p_ctg.g100kbp.repeat
 #Gerando uma versão hard-masked do genoma, substituindo as bases das repetições pela letra "N"
 java -jar NGSEPcore_5.0.0.jar GenomeAssemblyMask -i NRRLY27205.asm.bp.hap1.p_ctg.g100kbp.fasta -o NRRLY27205.asm.bp.hap1.p_ctg.g100kbp.hardmasked.fa -d NRRLY27205.asm.bp.hap1.p_ctg.g100kbp.repeats -h 
-conda deactivate
+
 ```
 
 Quantas bases foram mascaradas? Podemos usar o programa compseq do EMBOSS para verificar isso:
