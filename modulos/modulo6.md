@@ -42,15 +42,15 @@ Vamos anotar apenas a montagem que apresentar as melhores métricas de completud
 
 Faça o download de todas as proteínas do mesmo gênero no NCBI. Para fazer isso, acesse o banco de dados de taxonomia do NCBI em seu navegador e procure pelo nome do gênero _Kazachstania_ na lista de nomes. Clique no nome do gênero, conforme mostrado na figura:
 
-![GetProteinsFromTaxonomy_1](Figs/GetProteinsFromTaxonomy_1.png)
+![GetProteinsFromTaxonomy_1](/Figs/GetProteinsFromTaxonomy_1.png)
 
 Na página em que você chegou, identifique a tabela que mostra a figura, onde todos os registros associados a esse gênero em outros bancos de dados do NCBI estão listados. Clique na seção "Proteins", onde deve haver um número aproximado de 53.000 proteínas.
 
-![GetProteinsFromTaxonomy_2](Figs/GetProteinsFromTaxonomy_2.png)
+![GetProteinsFromTaxonomy_2](/Figs/GetProteinsFromTaxonomy_2.png)
 
 Finalmente descarregue um arquivo com essas proteinas em formato fasta.
 
-![GetProteinsFromTaxonomy_2](Figs/GetProteinsFromTaxonomy_2.png)
+![GetProteinsFromTaxonomy_2](/Figs/GetProteinsFromTaxonomy_2.png)
 
 ### Anotando o Genoma - GALBA
 
@@ -127,6 +127,6 @@ igv
 
 Por exemplo, localize o contig h1tg000003l nas posições que vão de 551,742 até 578,200. Quais são os significados das regiões coloridas nas leituras? E qual é a interpretação das regiões roxas?" O que representa a região marcada com o número 495? É possível que haja um gene anotado nesta região? Aqui pode consultar a documentação do [IGV](https://igv.org/doc/desktop/#UserGuide/tracks/alignments/viewing_alignments_basics/). Tente colorir os alinhamentos com base na fita de origem da leitura.
 
-![IGV screenshot](Figs/igv_snapshot.png)
+![IGV screenshot](/Figs/igv_snapshot.png)
 
 Combine os contigs com mais de 100 kbp dos dois haplótipos (hap1 e hap2) em um único arquivo e, posteriormente, mapeie as leituras contra este arquivo. Você consegue identificar alguma diferença nos resultados?
