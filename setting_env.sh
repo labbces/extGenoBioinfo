@@ -23,6 +23,11 @@ rm -rf ~/miniconda3/miniconda.sh
 conda config --add channels conda-forge
 conda config --add channels bioconda
 
+#Installing singularity
+conda create -y -n singularitycew -c wallaulab singularityce conda-forge::cni-plugins
+ln -s /usr/bin/mksquashfs /usr/local/bin/
+ln -s /usr/bin/unsquashfs /usr/local/bin/
+
 #Installing Bioinformatics Software using conda
 # Most of the packages will be installed using independent environments
 
@@ -38,7 +43,7 @@ conda create -y -n sratoolkit -c bioconda sra-tools
 conda create -y -n tidk -c bioconda tidk
 conda create -y -n compleasm -c conda-forge -c bioconda compleasm
 conda create -y -n merqury -c bioconda merqury
-conda create -y -n jupiterplot -c bioconda circos samtools minimap2
+conda create -y -n jupiterplot -c bioconda circos circos-tools samtools minimap2
 conda create -y -n igv -c bioconda igv samtools
 conda create -y -n eggnogmapper -c bioconda -c conda-forge eggnog-mapper
 conda create -y -n transcriptomics -c conda-forge -c bioconda ffq python fastqc bbmap multiqc
@@ -49,6 +54,7 @@ conda create -y -n transcriptomics -c conda-forge -c bioconda ffq python fastqc 
 conda create -y -n genomescope2 -c bioconda genomescope2
 conda activate genomescope2
 conda install -y conda-forge::r-devtools
+conda install pandan numpy
 R -e 'require(remotes);install_version("Matrix", version = "1.6-1",repos="https://cloud.r-project.org/")'
 R -e 'require(remotes);install_version("MASS", version = "7.3-60",repos="https://cloud.r-project.org/")'
 R -e 'install.packages("viridis", repos="https://brieger.esalq.usp.br/CRAN/")'

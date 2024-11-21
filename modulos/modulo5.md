@@ -33,7 +33,7 @@ FastK -v -t16 -k31 -M16 -T4 SRR25033384.filt.fastq.gz -NSRR25033384_k31
 Histex -G SRR25033384_k31 > SRR25033384_k31.histo
 genomescope2 --input SRR25033384_k31.histo --output SRR25033384_k31.genomescope2 --ploidy 2 --kmer_length 31 --name_prefix SRR25033384_k31
 smudgeplot.py hetmers -L 18 -t 4 --verbose -o SRR25033384_k31_pairs SRR25033384_k31.ktab
-smudgeplot.py plot -t SRR25033384_k31 -o SRR25033384_k31_smudgeplot SRR25033384_k31_pairs_text.smu
+smudgeplot.py all -o SRR25033384_k17_smudgeplot SRR25033384_k31_pairs_text.smu
 conda deactivate
 ```
 
@@ -53,7 +53,7 @@ Vamos prosseguir com o processo de montagem. Utilizaremos dois montadores e comp
 
 ```
 conda activate hifiasm
-hifiasm -f0 -o NRRLY27205.asm -t 5 SRR25033384.fq.gz >  NRRLY27205.hifiasm.log 2> NRRLY27205.hifiasm.log
+hifiasm -f0 -o NRRLY27205.asm -t 5 SRR25033384.filt.fastq.gz >  NRRLY27205.hifiasm.log 2> NRRLY27205.hifiasm.log
 awk '/^S/{print ">"$2;print $3}' NRRLY27205.asm.bp.hap1.p_ctg.gfa > NRRLY27205.asm.bp.hap1.p_ctg.fa
 awk '/^S/{print ">"$2;print $3}' NRRLY27205.asm.bp.hap2.p_ctg.gfa > NRRLY27205.asm.bp.hap2.p_ctg.fa
 awk '/^S/{print ">"$2;print $3}' NRRLY27205.asm.bp.p_ctg.gfa > NRRLY27205.asm.bp.p_ctg.fa
