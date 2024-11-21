@@ -131,7 +131,7 @@ pheatmap(df_wide,
          color = color_gradient)
 ```
 
-Another alternative is to use the ComplexHeatMap package, which allows for more customization of the heatmap. The following code generates a heatmap using the ComplexHeatMap package:
+Outra alternativa é utilizar o pacote ComplexHeatMap, que permite maior personalização do mapa de calor. O código a seguir gera um mapa de calor utilizando o pacote ComplexHeatMap
 
 ```R
 library(ComplexHeatmap)
