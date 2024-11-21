@@ -185,7 +185,7 @@ Utilize a sequência encontrada no arquivo [files/unknown_nuc.fasta](files/unkno
 
 ![BLAST web screenshot 1](../Figs/blast_1.png)
 
-Os resultados dessa pesquisa nos permitem concluir que o locus do transcrito está no cromossomo número 5 de A. thaliana. Quais são as coordenadas aproximadas no cromossomo? Existem exons? Explique sua resposta. Vamos usar esse resultado como entrada para o `est2genome`. Primeiro, extraia da sequência do cromossomo 5 a região detectada pelo BLAST, adicionando 5000 pb a montante e a jusante. Como você pode fazer isso? Use o `est2genome` para refinar a predição do locus. Quais vantagens o est2genome oferece em comparação com um simples BLAST?
+Os resultados dessa pesquisa nos permitem concluir que o locus do transcrito está no cromossomo número 5 de _A. thaliana_. Quais são as coordenadas aproximadas no cromossomo? Existem exons? Explique sua resposta. Vamos usar esse resultado como entrada para o `est2genome`. Primeiro, extraia da sequência do cromossomo 5 a região detectada pelo BLAST, adicionando 5000 pb a montante e a jusante. Como você pode fazer isso? Use o `est2genome` para refinar a predição do locus. Quais vantagens o est2genome oferece em comparação com um simples BLAST?
 
 
 
@@ -196,7 +196,7 @@ No entanto, executar o BLAST através da linha de comando tem muitos benefícios
 - É muito mais fácil executar várias consultas do BLAST usando a linha de comando do que a GUI.
 - A execução do BLAST com a linha de comando é reprodutível e pode ser documentada em um script.
 - Os resultados podem ser salvos em um formato legível por máquina que pode ser analisado posteriormente.
-- Você pode criar seus próprios bancos de dados para pesquisa em vez de usar os bancos de dados pré-construídos da NCBI.
+- Você pode criar seus próprios bancos de dados para pesquisa em vez de usar os bancos de dados pré-construídos do NCBI.
 - Isso permite a automação das consultas.
 - Isso permite que você use um servidor remoto para executar as consultas do BLAST.
 
