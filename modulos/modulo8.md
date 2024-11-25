@@ -232,7 +232,7 @@ rstudio
 
 Uma janela como a seguinte deveria aparecer na sua tela:
 
-![Screendhot Rstudio](images/rstudio.png)
+![Screendhot Rstudio](Figs/rstudio.png)
 
 A grosso modo, podemos dividir a área de trabalho do RStudio em quatro regiões:
 
@@ -245,7 +245,7 @@ Essas abas tornam o RStudio uma ferramenta versátil e eficaz para o desenvolvim
 
 No exemplo abaixo, criamos duas variáveis no console: greeting <- "Hola, Mundo!" e meuVector <- c(1, 2, 3, 4). Observe como elas são exibidas na aba Ambiente:
 
-![Screendhot Rstudio2](images/rstudio2.png)
+![Screendhot Rstudio2](Figs/rstudio2.png)
 
 Para a análise de dados de transcriptômica, vamos criar um novo script no qual armazenaremos todos os passos da análise. Para começar a gravar um script, clique em Arquivo - Novo Arquivo - Script R. Isso abrirá um editor de texto no canto superior esquerdo da interface do RStudio (acima da guia Console).
 
@@ -488,7 +488,7 @@ dds$EnvironmentalStress <-relevel(dds$EnvironmentalStress, ref='None')
 
 Vale a pena discutir um pouco sobre o tipo de objeto criado pelo DESeq com a função DESeqDataSetFromTximport. Este é um objeto do tipo `RangedSummarizedExperiment`, que pos sua vez é uma extensão do `SummarizedExperiment`, como apresentado de forma resumida na figura seguinte.
 
-[![SummarizedExperiment object](images/SummarizedExperiment.png)](https://bioconductor.org/packages/release/bioc/vignettes/SummarizedExperiment/inst/doc/SummarizedExperiment.html
+[![SummarizedExperiment object](Figs/SummarizedExperiment.png)](https://bioconductor.org/packages/release/bioc/vignettes/SummarizedExperiment/inst/doc/SummarizedExperiment.html
 )
 
 O objeto `SummarizedExperiment` é uma classe que serve como um recipiente eficiente para armazenar dados experimentais. Ele é utilizado para representar conjuntos de dados tabulares associados a uma matriz de dados principal, onde as linhas geralmente representam recursos biológicos (genes, por exemplo) e as colunas representam amostras. O `SummarizedExperiment` é projetado para armazenar informações adicionais sobre os dados, como metadados sobre as amostras e características biológicas, proporcionando uma estrutura organizada e completa.
@@ -578,7 +578,7 @@ plotPCA(vsd, intgroup=c("EnvironmentalStress", "Genotype"),ntop=500) + theme_bw(
 
 Desta análise, torna-se evidente que o principal fator que influencia os níveis de expressão é a condição ambiental. O genótipo não exerce uma influência significativa na expressão dos genes; na nossa matriz de design, ele atua mais como um fator de lotes ou bloqueio. Observe que esses dois primeiros componentes explicam 82% da variância observada nos dados.
 
-![PCA](images/transcriptomicsPCA_DESeq2.png)
+![PCA](Figs/transcriptomicsPCA_DESeq2.png)
 
 Outra análise exploratória importante é a análise de correlação entre as amostras. Novamente, aqui esperamos que amostras sob as mesmas condições apresentem valores de correlação mais elevados. Note que, nesta análise, ao contrário do `plotPCA`, não estamos utilizando os 500 genes mais variáveis, mas sim todos os genes.
 
