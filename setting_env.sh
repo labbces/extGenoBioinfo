@@ -121,3 +121,6 @@ conda create -y -n bedtools -c bioconda bedtools
 conda activate igv
 conda install samtools
 conda deactivate
+
+
+sudo apt install curl -y
